@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6 bg-white text-gray-800 font-sans">
+
+    <!-- Address -->
+    <div class="text-sm mb-4">
+        <p>{{ profile.address }}</p>
+    </div>
+
+    <!-- GitHub & LinkedIn Boxes -->
+    <div class="flex gap-4 mb-6">
+        <a href="{{ profile.github_url }}" target="_blank"
+           class="p-4 bg-gray-100 hover:bg-gray-200 rounded-xl shadow">GitHub</a>
+        <a href="{{ profile.linkedin_url }}" target="_blank"
+           class="p-4 bg-gray-100 hover:bg-gray-200 rounded-xl shadow">LinkedIn</a>
+    </div>
+
+    <!-- Work Experience -->
+    <h2 class="text-xl font-bold mb-2">Work Experience</h2>
+    {% for exp in experiences %}
+        <div class="mb-4 border p-4 rounded-xl">
+            <h3 class="font-semibold">{{ exp.role }} at {{ exp.company }}</h3>
+            <p class="text-sm text-gray-600">{{ exp.duration }}</p>
+            <p>{{ exp.description }}</p>
+        </div>
+    {% endfor %}
+
+    <!-- Education -->
+    <h2 class="text-xl font-bold mt-8 mb-2">Education</h2>
+    {% for edu in education %}
+        <div class="mb-4 border p-4 rounded-xl">
+            <h3 class="font-semibold">{{ edu.degree }}</h3>
+            <p class="text-sm">{{ edu.institution }} ({{ edu.duration }})</p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
